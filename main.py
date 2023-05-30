@@ -9,12 +9,19 @@ from datetime import datetime
 Year = 1990
 Counter = 0
 Dates = []
-
+start_date = '1990-01-01'
+end_date = '2023-01-01'
+ticker = '^SPX'
+Spx = yf.download(ticker, start_date, end_date)['Close']
+Spx.to_csv(f"{ticker}.csv")
+ticker2 = '^VIX'
+Vix = yf.download(ticker2, start_date, end_date)['Close']
+Vix.to_csv(f"{ticker2}.csv")
 # Creates 33 lists for the 33 years.
 MegaList = [[] for _ in range(33)]
 # next 2 lines assigns variables to the 2 different CSV files containing the data
-SPX = pd.read_csv(r"C:\Users\ashis\PycharmProjects\ScatterplotRegression\^SPX.csv")
-Vix = pd.read_csv(r"C:\Users\ashis\PycharmProjects\ScatterplotRegression\^VIX.csv")
+SPX = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^SPX.csv")
+Vix = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^VIX.csv")
 PercentChanges = []
 for x in range(8314):
     j = SPX.iloc[x, 1]
@@ -38,14 +45,7 @@ for x in range(8315):
 '''
 This part is hashed out for the moment to decrease time needed to run the program
 # The following 8 lines gather the 33 years worth of close data in SPX and VIX
-start_date = '1990-01-01'
-end_date = '2023-01-01'
-ticker = '^SPX'
-Spx = yf.download(ticker, start_date, end_date)['Close']
-Spx.to_csv(f"{ticker}.csv")
-ticker2 = '^VIX'
-Vix = yf.download(ticker2, start_date, end_date)['Close']
-Vix.to_csv(f"{ticker2}.csv")
+
 HistoricalVol = []
 for y in range(8295):
     Changes = []

@@ -27,11 +27,14 @@ Dec = [[] for x in range(33)]
 SPX = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^SPX.csv")
 Vix = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^VIX.csv")
 PercentChanges = []
+hundred = 100
+DecimalPercentChanges = [value/hundred for value in PercentChanges]
 for x in range(8314):
     j = SPX.iloc[x, 1]
     i = SPX.iloc[x+1, 1]
     PercentChange = ((i/j) - 1) * 100
     PercentChanges.append(round(PercentChange, 3))
+
 PercentChanges.insert(0, 1.78)
 for x in range(8315):
     Date = SPX.iloc[x, 0]
@@ -72,7 +75,7 @@ for x in range(8315):
         Nov[YearCounter].append(PercentChanges[x])
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
-
+print(DecimalPercentChanges)
 
 '''
 This part is hashed out for the moment to decrease time needed to run the program

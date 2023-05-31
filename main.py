@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-import pandas as pd
 import math
 import statistics
 import numpy as np
@@ -10,16 +9,20 @@ from datetime import datetime
 Year = 1990
 Counter = 0
 Dates = []
-start_date = '1990-01-01'
-end_date = '2023-01-01'
-ticker = '^SPX'
-Spx = yf.download(ticker, start_date, end_date)['Close']
-Spx.to_csv(f"{ticker}.csv")
-ticker2 = '^VIX'
-Vix = yf.download(ticker2, start_date, end_date)['Close']
-Vix.to_csv(f"{ticker2}.csv")
 # Creates 33 lists for the 33 years.
-MegaList = [[] for _ in range(33)]
+MegaList = [[] for x in range(33)]
+Jan = [[] for x in range(33)]
+Feb = [[] for x in range(33)]
+Mar = [[] for x in range(33)]
+Apr = [[] for x in range(33)]
+May = [[] for x in range(33)]
+Jun = [[] for x in range(33)]
+Jul = [[] for x in range(33)]
+Aug = [[] for x in range(33)]
+Sep = [[] for x in range(33)]
+Oct = [[] for x in range(33)]
+Nov = [[] for x in range(33)]
+Dec = [[] for x in range(33)]
 # next 2 lines assigns variables to the 2 different CSV files containing the data
 SPX = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^SPX.csv")
 Vix = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^VIX.csv")
@@ -42,11 +45,46 @@ for x in range(8315):
         Year += 1
         Counter += 1
         MegaList[Counter].append(PercentChanges[x])
+for x in range(8315):
+    YearCounter = Dates[x].year - 1990
+    Month = Dates[x].month
+    if Month == 1:
+        Jan[YearCounter].append(PercentChanges[x])
+    elif Month == 2:
+        Feb[YearCounter].append(PercentChanges[x])
+    elif Month == 3:
+        Mar[YearCounter].append(PercentChanges[x])
+    elif Month == 4:
+        Apr[YearCounter].append(PercentChanges[x])
+    elif Month == 5:
+        May[YearCounter].append(PercentChanges[x])
+    elif Month == 6:
+        Jun[YearCounter].append(PercentChanges[x])
+    elif Month == 7:
+        Jul[YearCounter].append(PercentChanges[x])
+    elif Month == 8:
+        Aug[YearCounter].append(PercentChanges[x])
+    elif Month == 9:
+        Sep[YearCounter].append(PercentChanges[x])
+    elif Month == 10:
+        Oct[YearCounter].append(PercentChanges[x])
+    elif Month == 11:
+        Nov[YearCounter].append(PercentChanges[x])
+    elif Month == 12:
+        Dec[YearCounter].append(PercentChanges[x])
+
 
 '''
 This part is hashed out for the moment to decrease time needed to run the program
 # The following 8 lines gather the 33 years worth of close data in SPX and VIX
-
+start_date = '1990-01-01'
+end_date = '2023-01-01'
+ticker = '^SPX'
+Spx = yf.download(ticker, start_date, end_date)['Close']
+Spx.to_csv(f"{ticker}.csv")
+ticker2 = '^VIX'
+Vix = yf.download(ticker2, start_date, end_date)['Close']
+Vix.to_csv(f"{ticker2}.csv")
 HistoricalVol = []
 for y in range(8295):
     Changes = []

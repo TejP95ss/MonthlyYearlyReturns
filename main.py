@@ -28,7 +28,6 @@ SPX = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^SPX.csv"
 Vix = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^VIX.csv")
 PercentChanges = []
 hundred = 100
-DecimalPercentChanges = [value/hundred for value in PercentChanges]
 for x in range(8314):
     j = SPX.iloc[x, 1]
     i = SPX.iloc[x+1, 1]
@@ -75,6 +74,7 @@ for x in range(8315):
         Nov[YearCounter].append(PercentChanges[x])
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
+DecimalPercentChanges = [value/100 for value in PercentChanges]
 print(DecimalPercentChanges)
 
 '''

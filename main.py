@@ -5,6 +5,23 @@ import statistics
 import numpy as np
 import yfinance as yf
 from datetime import datetime
+def ReturnGather(list):
+    x = [i for i in range(len(list))]
+    y = []
+    First = list[0]/100 + 1
+    y.append(First)
+    for j in range(1, len(list)):
+        if j == 1:
+            Value = First * (1 + (list[j]/100))
+            y.append(Value)
+        else:
+            Value = y[-1] * (1 + (list[j]/100))
+            y.append(Value)
+    plt.plot(x, y)
+    plt.xlabel("Days")
+    plt.ylabel("Relative Change Since the beginning")
+    plt.show()
+
 # The following two variables are declared to help separate percent changes into 33 different lists for 33 years.
 Year = 1990
 Counter = 0
@@ -32,7 +49,7 @@ for x in range(8314):
     i = SPX.iloc[x+1, 1]
     PercentChange = ((i/j) - 1) * 100
     PercentChanges.append(round(PercentChange, 3))
-
+DecimalPercentChanges = [round(value/100, 6) for value in PercentChanges]
 PercentChanges.insert(0, 1.78)
 for x in range(8315):
     Date = SPX.iloc[x, 0]
@@ -73,8 +90,7 @@ for x in range(8315):
         Nov[YearCounter].append(PercentChanges[x])
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
-DecimalPercentChanges = [round(value/100, 6) for value in PercentChanges]
-print(DecimalPercentChanges)
+ReturnGather(Sep[30])
 
 '''
 This part is hashed out for the moment to decrease time needed to run the program

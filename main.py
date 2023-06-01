@@ -90,7 +90,6 @@ for x in range(8315):
         Nov[YearCounter].append(PercentChanges[x])
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
-ReturnGather(Sep[30])
 
 '''
 This part is hashed out for the moment to decrease time needed to run the program

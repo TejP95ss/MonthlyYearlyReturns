@@ -17,10 +17,21 @@ def ReturnGather(list):
         else:
             Value = y[-1] * (1 + (list[j]/100))
             y.append(Value)
-    plt.plot(x, y)
-    plt.xlabel("Days")
-    plt.ylabel("Relative Change Since the beginning")
-    plt.show()
+    #plt.plot(x, y)
+    #plt.xlabel("Days")
+    #plt.ylabel("Relative Change Since the beginning")
+    #plt.show()
+
+def Average(list):
+    Values = []
+    for x in range(33):
+        Value = 1
+        for j in range(len(list[x])):
+            Value = (1 + (list[x][j]/100)) * Value
+            if j == len(list[x]) - 1:
+                Values.append(Value)
+    ArrayValues = np.array(Values)
+    print((np.mean(ArrayValues) - 1)*100)
 
 # The following two variables are declared to help separate percent changes into 33 different lists for 33 years.
 Year = 1990
@@ -90,7 +101,18 @@ for x in range(8315):
         Nov[YearCounter].append(PercentChanges[x])
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
-
+Average(Jan)
+Average(Feb)
+Average(Mar)
+Average(Apr)
+Average(May)
+Average(Jun)
+Average(Jul)
+Average(Aug)
+Average(Sep)
+Average(Oct)
+Average(Nov)
+Average(Dec)
 '''
 This part is hashed out for the moment to decrease time needed to run the program
 # The following 8 lines gather the 33 years worth of close data in SPX and VIX

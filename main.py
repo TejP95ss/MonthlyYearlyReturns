@@ -17,10 +17,10 @@ def ReturnGather(list):
         else:
             Value = y[-1] * (1 + (list[j]/100))
             y.append(Value)
-    #plt.plot(x, y)
-    #plt.xlabel("Days")
-    #plt.ylabel("Relative Change Since the beginning")
-    #plt.show()
+    plt.plot(x, y)
+    plt.xlabel("Days")
+    plt.ylabel("Relative Change Since the beginning")
+    plt.show()
 
 def Average(list):
     Values = []

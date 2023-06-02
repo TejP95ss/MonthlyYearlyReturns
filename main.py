@@ -101,18 +101,6 @@ for x in range(8315):
         Nov[YearCounter].append(PercentChanges[x])
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
-Average(Jan)
-Average(Feb)
-Average(Mar)
-Average(Apr)
-Average(May)
-Average(Jun)
-Average(Jul)
-Average(Aug)
-Average(Sep)
-Average(Oct)
-Average(Nov)
-Average(Dec)
 '''
 This part is hashed out for the moment to decrease time needed to run the program
 # The following 8 lines gather the 33 years worth of close data in SPX and VIX

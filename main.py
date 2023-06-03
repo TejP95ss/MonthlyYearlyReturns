@@ -21,7 +21,6 @@ def ReturnGather(list):
     plt.xlabel("Days")
     plt.ylabel("Relative Change Since the beginning")
     plt.show()
-
 def Average(list):
     Values = []
     for x in range(33):
@@ -32,7 +31,24 @@ def Average(list):
                 Values.append(Value)
     ArrayValues = np.array(Values)
     print((np.mean(ArrayValues) - 1)*100)
-
+def MinimumDrawdownAverage(list):
+    Values = []
+    for x in range(33):
+        Temp = []
+        Value = 1
+        for j in range(len(list[x])):
+            Value = (1 + (list[x][j]/100)) * Value
+            Temp.append(Value)
+            if j == len(list[x]) - 1:
+                Add = min(Temp)
+                Values.append(round(Add, 5))
+    print(Values)
+    ArrayValues = np.array(Values)
+    q = 0
+    for j in Values:
+        if (j-1)*100 < 0:
+            q += 1
+    print(q)
 # The following two variables are declared to help separate percent changes into 33 different lists for 33 years.
 Year = 1990
 Counter = 0
@@ -101,6 +117,18 @@ for x in range(8315):
         Nov[YearCounter].append(PercentChanges[x])
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
+MinimumDrawdownAverage(Jan)
+MinimumDrawdownAverage(Feb)
+MinimumDrawdownAverage(Mar)
+MinimumDrawdownAverage(Apr)
+MinimumDrawdownAverage(May)
+MinimumDrawdownAverage(Jun)
+MinimumDrawdownAverage(Jul)
+MinimumDrawdownAverage(Aug)
+MinimumDrawdownAverage(Sep)
+MinimumDrawdownAverage(Oct)
+MinimumDrawdownAverage(Nov)
+MinimumDrawdownAverage(Dec)
 '''
 This part is hashed out for the moment to decrease time needed to run the program
 # The following 8 lines gather the 33 years worth of close data in SPX and VIX

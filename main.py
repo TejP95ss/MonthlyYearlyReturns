@@ -42,13 +42,8 @@ def MinimumDrawdownAverage(list):
             if j == len(list[x]) - 1:
                 Add = min(Temp)
                 Values.append(round(Add, 5))
-    print(Values)
     ArrayValues = np.array(Values)
-    q = 0
-    for j in Values:
-        if (j-1)*100 < 0:
-            q += 1
-    print(q)
+    print(round((np.mean(ArrayValues) - 1)*100, 5))
 # The following two variables are declared to help separate percent changes into 33 different lists for 33 years.
 Year = 1990
 Counter = 0

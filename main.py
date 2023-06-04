@@ -142,7 +142,7 @@ for x in range(8315):
         Nov[YearCounter].append(PercentChanges[x])
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
-'''MaximumSurgeAverage(Jan)
+MaximumSurgeAverage(Jan)
 MaximumSurgeAverage(Feb)
 MaximumSurgeAverage(Mar)
 MaximumSurgeAverage(Apr)
@@ -153,7 +153,7 @@ MaximumSurgeAverage(Aug)
 MaximumSurgeAverage(Sep)
 MaximumSurgeAverage(Oct)
 MaximumSurgeAverage(Nov)
-MaximumSurgeAverage(Dec)'''
+MaximumSurgeAverage(Dec)
 
 '''
 This part is hashed out for the moment to decrease time needed to run the program

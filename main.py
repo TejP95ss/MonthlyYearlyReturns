@@ -5,8 +5,9 @@ import statistics
 import numpy as np
 import yfinance as yf
 from datetime import datetime
+
 def RelativeReturnCharter(list):
-    x = [i for i in range(len(list))]
+    x = [i+1 for i in range(len(list))]
     y = []
     First = list[0]/100 + 1
     y.append(First)
@@ -31,7 +32,49 @@ def MonthlyEndingAverage(list):
                 Values.append(Value)
     ArrayValues = np.array(Values)
     print((np.mean(ArrayValues) - 1)*100)
-'''
+#
+# def AverageMonthChart(list):
+#     XValueList = []
+#     BigList = [[] for l in range(23)]
+#     for x in range(33):
+#         XValueList.append(len(list[x]))
+#         for a in range(len(list[x])):
+#             CurrentValue = list[x][a]
+#             BigList[a].append(CurrentValue)
+#     xvalues = [s + 1 for s in range(max(XValueList))]
+#     y = []
+#     for g in BigList:
+#         if len(g) == 0:
+#             continue
+#         p = np.mean(g)
+#         ActualValue = (p/100) + 1
+#         y.append(round(ActualValue, 4))
+#     plt.plot(xvalues, y)
+#     plt.xlabel("Days")
+#     plt.ylabel("Relative Change Since the beginning")
+#     plt.title("Average Relative Change During the Month over the past 33 years.")
+#     plt.show()
+# def AverageYearlyChart(list):
+#     XValueList = [p+1 for p in range(253)]
+#     BigList = [[] for q in range(254)]
+#     for x in range(33):
+#         for a in range(len(list[x])):
+#             CurrentValue = list[x][a]
+#             BigList[a].append(CurrentValue)
+#     y = []
+#     for g in BigList:
+#         if len(g) == 0:
+#             continue
+#         p = np.mean(g)
+#         ActualValue = (p/100) + 1
+#         y.append(round(ActualValue, 4))
+#     NewY = y[:-1]
+#     plt.plot(XValueList, NewY)
+#     plt.xlabel("Days")
+#     plt.ylabel("Relative Change Since the beginning")
+#     plt.title("Average Relative Change During the Month over the past 33 years.")
+#     plt.show()
+
 def DailyAbsoluteAverage(list):
     Values = []
     for x in range(33):
@@ -44,7 +87,7 @@ def DailyAbsoluteAverage(list):
                 AverageofAbsolute = np.mean(Absolute)
                 Values.append(AverageofAbsolute)
     ArrayValues = np.array(Values)
-    print(round(np.mean(ArrayValues), 5))'''
+    print(round(np.mean(ArrayValues), 5))
 
 def MinimumDrawdownAverage(list):
     Values = []

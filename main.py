@@ -5,7 +5,6 @@ import statistics
 import numpy as np
 import yfinance as yf
 from datetime import datetime
-
 def RelativeReturnCharter(list):
     x = [i+1 for i in range(len(list))]
     y = []
@@ -75,6 +74,28 @@ def MonthlyEndingAverage(list):
 #     plt.title("Average Relative Change During the Month over the past 33 years.")
 #     plt.show()
 
+def FiveNumberSummary(list):
+    Values = []
+    for x in range(33):
+        for j in range(len(list[x])):
+            Value = list[x][j]
+            Values.append(Value)
+    ArrayValues = np.array(Values)
+    Percentiles = np.percentile(ArrayValues, [25, 50, 75])
+    Min = min(ArrayValues)
+    Max = max(ArrayValues)
+    print(f'Min = {Min}')
+    print(f'Q1 = {Percentiles[0]}')
+    print(f'Med = {Percentiles[1]}')
+    print(f'Q3 = {Percentiles[2]}')
+    print(f'Max = {Max}')
+    print(f'Mean = {round(np.mean(ArrayValues), 5)}')
+    print(f'Standard Deviation = {round(np.std(ArrayValues), 5)}')
+    plt.hist(ArrayValues, 50, rwidth=.95, color='skyblue')
+    plt.xlabel("Daily Percent Changes")
+    plt.ylabel("Frequency")
+    plt.show()
+
 def DailyAbsoluteAverage(list):
     Values = []
     for x in range(33):
@@ -101,6 +122,7 @@ def MinimumDrawdownAverage(list):
                 Add = min(Temp)
                 Values.append(round(Add, 5))
     ArrayValues = np.array(Values)
+    print(ArrayValues)
     print(round((np.mean(ArrayValues) - 1)*100, 5))
 
 def MaximumSurgeAverage(list):
@@ -185,7 +207,7 @@ for x in range(8315):
         Nov[YearCounter].append(PercentChanges[x])
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
-DailyAbsoluteAverage(Jun)
+FiveNumberSummary(Sep)
 '''
 This part is hashed out for the moment to decrease time needed to run the program
 # The following 8 lines gather the 33 years worth of close data in SPX and VIX

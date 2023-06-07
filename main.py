@@ -245,23 +245,4 @@ for y in range(8295):
     HVOL = math.sqrt(252) * StandardDeviation
     HistoricalVol.append(round(HVOL, 3))
 VIXList = []
-NewHVOL = []
-for i in range(8295):
-    j = Vix.iloc[i, 1]
-    k = HistoricalVol[i]
-    if j > 0:
-        VIXList.append(round(j, 3))
-        NewHVOL.append(HistoricalVol[i])
-matrix = np.corrcoef(VIXList, NewHVOL)
-corr = matrix[0,  1]
-print(corr*corr)
-a, b = np.polyfit(VIXList, NewHVOL, 1)
-ArrayVix = np.array(VIXList)
-# The following lines are there to plot the line of best fit and the scatter plot.
-# Labels and title are also provided to the graph by the following lines
-plt.plot(ArrayVix, (a*ArrayVix) + b, color="red")
-plt.scatter(VIXList, NewHVOL, c=np.random.rand(1, len(NewHVOL)))
-plt.title("20 Day Realized Volatility SPX vs. VIX from 1/2/1990 to 12/1/2022")
-plt.xlabel("VIX")
-plt.ylabel("20 Day Realized Volatility SPX")
-plt.show()'''
+

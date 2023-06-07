@@ -23,15 +23,16 @@ def RelativeReturnCharter(list):
     plt.show()
 def MonthlyEndingAverage(list):
     Values = []
-    for x in range(33):
+    for x in range(len(list)):
         Value = 1
-        for j in range(len(list[x])):
-            Value = (1 + (list[x][j]/100)) * Value
-            if j == len(list[x]) - 1:
+        for i, j in enumerate(list[x]):
+            Value = (1 + (j/100)) * Value
+            if i == len(list[x]) - 1:
                 Values.append(Value)
     ArrayValues = np.array(Values)
+    print(ArrayValues)
     print((np.mean(ArrayValues) - 1)*100)
-#
+
 # def AverageMonthChart(list):
 #     XValueList = []
 #     BigList = [[] for l in range(23)]
@@ -122,7 +123,7 @@ def MinimumDrawdownAverage(list):
                 Add = min(Temp)
                 Values.append(round(Add, 5))
     ArrayValues = np.array(Values)
-    print(ArrayValues)
+    print((ArrayValues - 1) * 100)
     print(round((np.mean(ArrayValues) - 1)*100, 5))
 
 def MaximumSurgeAverage(list):
@@ -157,6 +158,8 @@ Sep = [[] for x in range(33)]
 Oct = [[] for x in range(33)]
 Nov = [[] for x in range(33)]
 Dec = [[] for x in range(33)]
+Buy = [[] for x in range(32)]
+Sell = [[] for x in range(33)]
 # next 2 lines assigns variables to the 2 different CSV files containing the data
 SPX = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^SPX.csv")
 Vix = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^VIX.csv")
@@ -207,6 +210,17 @@ for x in range(8315):
         Nov[YearCounter].append(PercentChanges[x])
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
+# for x in range(8315):
+#     if x <= 82 or x >= 8273:
+#         continue
+#     YearCounter = Dates[x].year - 1990
+#     Month = Dates[x].month
+#     if 1 <= Month <= 4:
+#         Buy[YearCounter - 1].append(PercentChanges[x])
+#     elif Month == 11 or Month == 12:
+#         Buy[YearCounter].append(PercentChanges[x])
+#     elif 5 <= Month <= 10:
+#         Sell[YearCounter].append(PercentChanges[x])
 
 '''
 This part is hashed out for the moment to decrease time needed to run the program

@@ -33,27 +33,28 @@ def MonthlyEndingAverage(list):
     print(ArrayValues)
     print((np.mean(ArrayValues) - 1)*100)
 
-# def AverageMonthChart(list):
-#     XValueList = []
-#     BigList = [[] for l in range(23)]
-#     for x in range(33):
-#         XValueList.append(len(list[x]))
-#         for a in range(len(list[x])):
-#             CurrentValue = list[x][a]
-#             BigList[a].append(CurrentValue)
-#     xvalues = [s + 1 for s in range(max(XValueList))]
-#     y = []
-#     for g in BigList:
-#         if len(g) == 0:
-#             continue
-#         p = np.mean(g)
-#         ActualValue = (p/100) + 1
-#         y.append(round(ActualValue, 4))
-#     plt.plot(xvalues, y)
-#     plt.xlabel("Days")
-#     plt.ylabel("Relative Change Since the beginning")
-#     plt.title("Average Relative Change During the Month over the past 33 years.")
-#     plt.show()
+def AverageMonthChart(list):
+    XValueList = []
+    for x in range(len(list)):
+        XValueList.append(len(list[x]))
+    BigList = [[] for l in range(max(XValueList))]
+    for x in range(len(list)):
+        for a in range(len(list[x])):
+            CurrentValue = list[x][a]
+            BigList[a].append(CurrentValue)
+    xvalues = [s + 1 for s in range(max(XValueList))]
+    y = []
+    for g in BigList:
+        if len(g) == 0:
+            continue
+        p = np.mean(g)
+        ActualValue = (p/100) + 1
+        y.append(round(ActualValue, 4))
+    plt.plot(xvalues, y)
+    plt.xlabel("Days")
+    plt.ylabel("Relative Change Since the beginning")
+    plt.title("Average Relative Change During the Month over the past 33 years.")
+    plt.show()
 # def AverageYearlyChart(list):
 #     XValueList = [p+1 for p in range(253)]
 #     BigList = [[] for q in range(254)]
@@ -77,7 +78,7 @@ def MonthlyEndingAverage(list):
 
 def FiveNumberSummary(list):
     Values = []
-    for x in range(33):
+    for x in range(len(list)):
         for j in range(len(list[x])):
             Value = list[x][j]
             Values.append(Value)
@@ -99,7 +100,7 @@ def FiveNumberSummary(list):
 
 def DailyAbsoluteAverage(list):
     Values = []
-    for x in range(33):
+    for x in range(len(list)):
         Temp = []
         for j in range(len(list[x])):
             Value = list[x][j]
@@ -109,11 +110,11 @@ def DailyAbsoluteAverage(list):
                 AverageofAbsolute = np.mean(Absolute)
                 Values.append(AverageofAbsolute)
     ArrayValues = np.array(Values)
-    print(round(np.mean(ArrayValues), 5))
+    print(round(np.mean(ArrayValues), 10))
 
 def MinimumDrawdownAverage(list):
     Values = []
-    for x in range(33):
+    for x in range(len(list)):
         Temp = []
         Value = 1
         for j in range(len(list[x])):
@@ -128,7 +129,7 @@ def MinimumDrawdownAverage(list):
 
 def MaximumSurgeAverage(list):
     Values = []
-    for x in range(33):
+    for x in range(len(list)):
         Temp = []
         Value = 1
         for j in range(len(list[x])):
@@ -160,6 +161,10 @@ Nov = [[] for x in range(33)]
 Dec = [[] for x in range(33)]
 Buy = [[] for x in range(32)]
 Sell = [[] for x in range(33)]
+Q1 = [[] for x in range(33)]
+Q2 = [[] for x in range(33)]
+Q3 = [[] for x in range(33)]
+Q4 = [[] for x in range(33)]
 # next 2 lines assigns variables to the 2 different CSV files containing the data
 SPX = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^SPX.csv")
 Vix = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^VIX.csv")
@@ -210,6 +215,7 @@ for x in range(8315):
         Nov[YearCounter].append(PercentChanges[x])
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
+
 # for x in range(8315):
 #     if x <= 82 or x >= 8273:
 #         continue
@@ -221,6 +227,15 @@ for x in range(8315):
 #         Buy[YearCounter].append(PercentChanges[x])
 #     elif 5 <= Month <= 10:
 #         Sell[YearCounter].append(PercentChanges[x])
-
-
-
+#
+# for x in range(8315):
+#     YearCounter = Dates[x].year - 1990
+#     Month = Dates[x].month
+#     if 1 <= Month <= 3:
+#         Q1[YearCounter].append(PercentChanges[x])
+#     elif 4 <= Month <= 6:
+#         Q2[YearCounter].append(PercentChanges[x])
+#     elif 7 <= Month <= 9:
+#         Q3[YearCounter].append(PercentChanges[x])
+#     elif 10 <= Month <= 12:
+#         Q4[YearCounter].append(PercentChanges[x])

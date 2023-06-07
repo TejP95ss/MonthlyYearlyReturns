@@ -222,27 +222,5 @@ for x in range(8315):
 #     elif 5 <= Month <= 10:
 #         Sell[YearCounter].append(PercentChanges[x])
 
-'''
-This part is hashed out for the moment to decrease time needed to run the program
-# The following 8 lines gather the 33 years worth of close data in SPX and VIX
-start_date = '1990-01-01'
-end_date = '2023-01-01'
-ticker = '^SPX'
-Spx = yf.download(ticker, start_date, end_date)['Close']
-Spx.to_csv(f"{ticker}.csv")
-ticker2 = '^VIX'
-Vix = yf.download(ticker2, start_date, end_date)['Close']
-Vix.to_csv(f"{ticker2}.csv")
-HistoricalVol = []
-for y in range(8295):
-    Changes = []
-    for z in range(20):
-        g = SPX.iloc[z+y, 1]
-        k = SPX.iloc[z+y+1, 1]
-        LogChange = math.log(k/g) * 100
-        Changes.append(LogChange)
-    StandardDeviation = statistics.stdev(Changes)
-    HVOL = math.sqrt(252) * StandardDeviation
-    HistoricalVol.append(round(HVOL, 3))
-VIXList = []
+
 

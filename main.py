@@ -21,7 +21,7 @@ def RelativeReturnCharter(list):
     plt.xlabel("Days")
     plt.ylabel("Relative Change Since the beginning")
     plt.show()
-def MonthlyEndingAverage(list):
+def LongTimePeriodEndingAverage(list):
     Values = []
     for x in range(len(list)):
         Value = 1
@@ -30,7 +30,6 @@ def MonthlyEndingAverage(list):
             if i == len(list[x]) - 1:
                 Values.append(Value)
     ArrayValues = np.array(Values)
-    print(ArrayValues)
     print((np.mean(ArrayValues) - 1)*100)
 
 def AverageMonthChart(list):
@@ -165,6 +164,11 @@ Q1 = [[] for x in range(33)]
 Q2 = [[] for x in range(33)]
 Q3 = [[] for x in range(33)]
 Q4 = [[] for x in range(33)]
+Mon = [[] for x in range(33)]
+Tue = [[] for x in range(33)]
+Wed = [[] for x in range(33)]
+Thu = [[] for x in range(33)]
+Fri = [[] for x in range(33)]
 # next 2 lines assigns variables to the 2 different CSV files containing the data
 SPX = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^SPX.csv")
 Vix = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^VIX.csv")
@@ -239,3 +243,17 @@ for x in range(8315):
 #         Q3[YearCounter].append(PercentChanges[x])
 #     elif 10 <= Month <= 12:
 #         Q4[YearCounter].append(PercentChanges[x])
+#
+# for x in range(8315):
+#     YearCounter = Dates[x].year - 1990
+#     DayofWeek = Dates[x].weekday()
+#     if DayofWeek == 0:
+#         Mon[YearCounter].append(PercentChanges[x])
+#     elif DayofWeek == 1:
+#         Tue[YearCounter].append(PercentChanges[x])
+#     elif DayofWeek == 2:
+#         Wed[YearCounter].append(PercentChanges[x])
+#     elif DayofWeek == 3:
+#         Thu[YearCounter].append(PercentChanges[x])
+#     elif DayofWeek == 4:
+#         Fri[YearCounter].append(PercentChanges[x])

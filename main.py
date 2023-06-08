@@ -74,7 +74,6 @@ def AverageMonthChart(list):
 #     plt.ylabel("Relative Change Since the beginning")
 #     plt.title("Average Relative Change During the Month over the past 33 years.")
 #     plt.show()
-
 def FiveNumberSummary(list):
     Values = []
     for x in range(len(list)):

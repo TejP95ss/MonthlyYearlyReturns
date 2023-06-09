@@ -231,7 +231,7 @@ for x in range(8315):
 #         Buy[YearCounter].append(PercentChanges[x])
 #     elif 5 <= Month <= 10:
 #         Sell[YearCounter].append(PercentChanges[x])
-#
+
 # for x in range(8315):
 #     YearCounter = Dates[x].year - 1990
 #     Month = Dates[x].month
@@ -243,7 +243,7 @@ for x in range(8315):
 #         Q3[YearCounter].append(PercentChanges[x])
 #     elif 10 <= Month <= 12:
 #         Q4[YearCounter].append(PercentChanges[x])
-#
+
 # for x in range(8315):
 #     YearCounter = Dates[x].year - 1990
 #     DayofWeek = Dates[x].weekday()

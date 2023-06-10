@@ -140,6 +140,21 @@ def MaximumSurgeAverage(list):
     ArrayValues = np.array(Values)
     print(round((np.mean(ArrayValues) - 1)*100, 5))
 
+def VIXSPXChangesCorrelation(VIXlist, SPXlist):
+    matrix = np.corrcoef(VIXlist, SPXlist)
+    corr = matrix[0, 1]
+    print(corr*corr)
+    a, b = np.polyfit(VIXlist, SPXlist, 1)
+    ArrayVix = np.array(VIXlist)
+    # The following lines are there to plot the line of best fit and the scatter plot.
+    # Labels and title are also provided to the graph by the following lines
+    plt.plot(ArrayVix, (a * ArrayVix) + b, color="red")
+    plt.scatter(VIXlist, SPXlist, c=np.random.rand(1, len(VIXlist)))
+    plt.title("SPX Daily percent changes vs. VIX percent changes from 1/2/1990 to 12/1/2022")
+    plt.xlabel("VIX % changes")
+    plt.ylabel("SPX % changes")
+    plt.show()
+
 # The following two variables are declared to help separate percent changes into 33 different lists for 33 years.
 Year = 1990
 Counter = 0
@@ -171,8 +186,9 @@ Thu = [[] for x in range(33)]
 Fri = [[] for x in range(33)]
 # next 2 lines assigns variables to the 2 different CSV files containing the data
 SPX = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^SPX.csv")
-Vix = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^VIX.csv")
+VIX = pd.read_csv(r"C:\Users\ashis\PycharmProjects\MonthlyYearlyReturn\^VIX.csv")
 PercentChanges = []
+VIXPercentChanges = []
 for x in range(8314):
     j = SPX.iloc[x, 1]
     i = SPX.iloc[x+1, 1]
@@ -180,6 +196,13 @@ for x in range(8314):
     PercentChanges.append(round(PercentChange, 3))
 DecimalPercentChanges = [round(value/100, 6) for value in PercentChanges]
 PercentChanges.insert(0, 1.78)
+for x in range(8314):
+    j = VIX.iloc[x, 1]
+    i = VIX.iloc[x+1, 1]
+    VIXPercentChange = ((i/j) - 1) * 100
+    VIXPercentChanges.append(round(VIXPercentChange, 3))
+DecimalPercentChanges = [round(value/100, 6) for value in VIXPercentChanges]
+VIXPercentChanges.insert(0, -7)
 for x in range(8315):
     Date = SPX.iloc[x, 0]
     CalendarDate = datetime.strptime(Date, '%Y-%m-%d')
@@ -257,3 +280,4 @@ for x in range(8315):
 #         Thu[YearCounter].append(PercentChanges[x])
 #     elif DayofWeek == 4:
 #         Fri[YearCounter].append(PercentChanges[x])
+VIXSPXChangesCorrelation(VIXPercentChanges, PercentChanges)

@@ -140,20 +140,20 @@ def MaximumSurgeAverage(list):
     ArrayValues = np.array(Values)
     print(round((np.mean(ArrayValues) - 1)*100, 5))
 
-def VIXSPXChangesCorrelation(VIXlist, SPXlist):
-    matrix = np.corrcoef(VIXlist, SPXlist)
-    corr = matrix[0, 1]
-    print(corr*corr)
-    a, b = np.polyfit(VIXlist, SPXlist, 1)
-    ArrayVix = np.array(VIXlist)
-    # The following lines are there to plot the line of best fit and the scatter plot.
-    # Labels and title are also provided to the graph by the following lines
-    plt.plot(ArrayVix, (a * ArrayVix) + b, color="red")
-    plt.scatter(VIXlist, SPXlist, c=np.random.rand(1, len(VIXlist)))
-    plt.title("SPX Daily percent changes vs. VIX percent changes from 1/2/1990 to 12/1/2022")
-    plt.xlabel("VIX % changes")
-    plt.ylabel("SPX % changes")
-    plt.show()
+# def VIXSPXChangesCorrelation(VIXlist, SPXlist):
+#     matrix = np.corrcoef(VIXlist, SPXlist)
+#     corr = matrix[0, 1]
+#     print(corr*corr)
+#     a, b = np.polyfit(VIXlist, SPXlist, 1)
+#     ArrayVix = np.array(VIXlist)
+#     # The following lines are there to plot the line of best fit and the scatter plot.
+#     # Labels and title are also provided to the graph by the following lines
+#     plt.plot(ArrayVix, (a * ArrayVix) + b, color="red")
+#     plt.scatter(VIXlist, SPXlist, c=np.random.rand(1, len(VIXlist)))
+#     plt.title("SPX Daily percent changes vs. VIX percent changes from 1/2/1990 to 12/1/2022")
+#     plt.xlabel("VIX % changes")
+#     plt.ylabel("SPX % changes")
+#     plt.show()
 
 # The following two variables are declared to help separate percent changes into 33 different lists for 33 years.
 Year = 1990

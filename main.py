@@ -5,6 +5,7 @@ import statistics
 import numpy as np
 import yfinance as yf
 from datetime import datetime
+import scipy
 def RelativeReturnCharter(list):
     x = [i+1 for i in range(len(list))]
     y = []
@@ -141,14 +142,12 @@ def MaximumSurgeAverage(list):
     print(round((np.mean(ArrayValues) - 1)*100, 5))
 
 # def VIXSPXChangesCorrelation(VIXlist, SPXlist):
-#     matrix = np.corrcoef(VIXlist, SPXlist)
-#     corr = matrix[0, 1]
-#     print(corr*corr)
-#     a, b = np.polyfit(VIXlist, SPXlist, 1)
+#     slope, intercept, r_value, p_value, std_err = scipy.stats.linregress(VIXlist, SPXlist)
+#     print(r_value**2)
 #     ArrayVix = np.array(VIXlist)
 #     # The following lines are there to plot the line of best fit and the scatter plot.
 #     # Labels and title are also provided to the graph by the following lines
-#     plt.plot(ArrayVix, (a * ArrayVix) + b, color="red")
+#     plt.plot(ArrayVix, (slope * ArrayVix) + intercept, color="red")
 #     plt.scatter(VIXlist, SPXlist, c=np.random.rand(1, len(VIXlist)))
 #     plt.title("SPX Daily percent changes vs. VIX percent changes from 1/2/1990 to 12/1/2022")
 #     plt.xlabel("VIX % changes")
@@ -280,4 +279,3 @@ for x in range(8315):
 #         Thu[YearCounter].append(PercentChanges[x])
 #     elif DayofWeek == 4:
 #         Fri[YearCounter].append(PercentChanges[x])
-VIXSPXChangesCorrelation(VIXPercentChanges, PercentChanges)

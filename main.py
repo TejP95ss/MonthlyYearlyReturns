@@ -279,4 +279,4 @@ for x in range(8315):
 #         Thu[YearCounter].append(PercentChanges[x])
 #     elif DayofWeek == 4:
 #         Fri[YearCounter].append(PercentChanges[x])
-
+AverageMonthChart(Jun)

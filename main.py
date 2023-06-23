@@ -32,7 +32,7 @@ def LongTimePeriodEndingAverage(list):
                 Values.append(Value)
     ArrayValues = np.array(Values)
     print((np.mean(ArrayValues) - 1)*100)
-#
+
 # def AverageMonthChart(list):
 #     XValueList = []
 #     for x in range(len(list)):

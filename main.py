@@ -258,17 +258,17 @@ for x in range(8315):
     elif Month == 12:
         Dec[YearCounter].append(PercentChanges[x])
 
-# for x in range(8315):
-#     if x <= 82 or x >= 8273:
-#         continue
-#     YearCounter = Dates[x].year - 1990
-#     Month = Dates[x].month
-#     if 1 <= Month <= 4:
-#         Buy[YearCounter - 1].append(PercentChanges[x])
-#     elif Month == 11 or Month == 12:
-#         Buy[YearCounter].append(PercentChanges[x])
-#     elif 5 <= Month <= 10:
-#         Sell[YearCounter].append(PercentChanges[x])
+for x in range(8315):
+    if x <= 82 or x >= 8273:
+        continue
+    YearCounter = Dates[x].year - 1990
+    Month = Dates[x].month
+    if 1 <= Month <= 4:
+        Buy[YearCounter - 1].append(PercentChanges[x])
+    elif Month == 11 or Month == 12:
+        Buy[YearCounter].append(PercentChanges[x])
+    elif 5 <= Month <= 10:
+        Sell[YearCounter].append(PercentChanges[x])
 
 for x in range(8315):
     YearCounter = Dates[x].year - 1990

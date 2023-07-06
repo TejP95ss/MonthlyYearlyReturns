@@ -32,38 +32,37 @@ def LongTimePeriodEndingAverage(list):
                 Values.append(Value)
     ArrayValues = np.array(Values)
     print((np.mean(ArrayValues) - 1)*100)
+def AverageMonthChart(list):
+    XValueList = []
+    for x in range(len(list)):
+        XValueList.append(len(list[x]))
+    BigList = [[] for l in range(max(XValueList))]
+    for x in range(len(list)):
+        for a in range(len(list[x])):
+            CurrentValue = list[x][a]
+            BigList[a].append(CurrentValue)
+    xvalues = [s + 1 for s in range(max(XValueList))]
+    y = []
+    for g in BigList:
+        if len(g) == 0:
+            continue
+        p = np.mean(g)
+        ActualValue = (p/100) + 1
+        y.append(round(ActualValue, 4))
+    Newy = []
+    for p in range(len(y)):
+        if p == 0:
+            value = y[p]
+            Newy.append(value)
+        else:
+            value = y[p] * Newy[p-1]
+            Newy.append(value)
+    plt.plot(xvalues, Newy)
+    plt.xlabel("Days")
+    plt.ylabel("Relative Change Since the beginning")
+    plt.title("Average Relative Change During the Month over the past 33 years.")
+    plt.show()
 
-# def AverageMonthChart(list):
-#     XValueList = []
-#     for x in range(len(list)):
-#         XValueList.append(len(list[x]))
-#     BigList = [[] for l in range(max(XValueList))]
-#     for x in range(len(list)):
-#         for a in range(len(list[x])):
-#             CurrentValue = list[x][a]
-#             BigList[a].append(CurrentValue)
-#     xvalues = [s + 1 for s in range(max(XValueList))]
-#     y = []
-#     for g in BigList:
-#         if len(g) == 0:
-#             continue
-#         p = np.mean(g)
-#         ActualValue = (p/100) + 1
-#         y.append(round(ActualValue, 4))
-#     Newy = []
-#     for p in range(len(y)):
-#         if p == 0:
-#             value = y[p]
-#             Newy.append(value)
-#         else:
-#             value = y[p] * Newy[p-1]
-#             Newy.append(value)
-#     plt.plot(xvalues, Newy)
-#     plt.xlabel("Days")
-#     plt.ylabel("Relative Change Since the beginning")
-#     plt.title("Average Relative Change During the Month over the past 33 years.")
-#     plt.show()
-#
 # def AverageYearlyChart(list):
 #     XValueList = [p+1 for p in range(254)]
 #     BigList = [[] for q in range(254)]
@@ -295,6 +294,4 @@ for x in range(8315):
         Thu[YearCounter].append(PercentChanges[x])
     elif DayofWeek == 4:
         Fri[YearCounter].append(PercentChanges[x])
-
-
 

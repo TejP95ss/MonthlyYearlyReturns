@@ -295,3 +295,4 @@ for x in range(8315):
     elif DayofWeek == 4:
         Fri[YearCounter].append(PercentChanges[x])
 
+
